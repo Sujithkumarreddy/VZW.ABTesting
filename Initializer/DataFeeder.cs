@@ -24,7 +24,9 @@ namespace WebApiSample.Initializer
             lt.ImgPath = "images/I6_Black.jpeg";
             lt.Price = "$200.0";
             lt.OfferPrice = "$190.0";
-            lt.Views = 100;            
+            lt.Views = 100;
+            lt.Description = "SUper Nateral Phone ...................... Random text.................";
+            lt.TotalNoOfPurchases = 40;
             lstProd.Add(lt);
 
             Product lt1 = new Product();
@@ -38,6 +40,8 @@ namespace WebApiSample.Initializer
             lt1.Price = "$200.0";
             lt1.OfferPrice = "$190.0";
             lt1.Views = 120;
+            lt1.TotalNoOfPurchases = 20;
+            lt1.Description = "SUper Nateral Phone ...................... Random text.................";
             lstProd.Add(lt1);
 
             Product lt2 = new Product();
@@ -51,6 +55,8 @@ namespace WebApiSample.Initializer
             lt2.Price = "$200.0";
             lt2.OfferPrice = "$190.0";
             lt2.Views = 80;
+            lt2.TotalNoOfPurchases = 10;
+            lt2.Description = "SUper Nateral Phone ...................... Random text.................";
             lstProd.Add(lt2);
 
             return lstProd;
@@ -67,7 +73,29 @@ namespace WebApiSample.Initializer
             objAdd.Device = "Android";
             objAdd.Gender = "M";
             objAdd.Region = "TV";
+            objAdd.ImageURL =  "images/I6_Black.jpeg";
             lstAdds.Add(objAdd);
+            return lstAdds;
+        }
+
+        public static List<AddsHistory> getAddsHistory()
+        {
+            List<AddsHistory> lstAdds = new List<AddsHistory>();
+            AddsHistory objAdd = new AddsHistory();
+            objAdd.AgeGroup = "below 5";            
+            objAdd.Gender = "M";
+            objAdd.Region = "TV";
+            objAdd.ID = 1;
+            objAdd.Views = 20;
+            lstAdds.Add(objAdd);
+
+            AddsHistory objAdd1 = new AddsHistory();
+            objAdd1.AgeGroup = "10 to 15";
+            objAdd1.Gender = "F";
+            objAdd1.Region = "RG";
+            objAdd1.ID = 2;
+            objAdd1.Views = 20;
+            lstAdds.Add(objAdd1);
             return lstAdds;
         }
 

@@ -2,69 +2,82 @@
 <html>
 <head>
     <title>Web Api with XML</title>
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <link href="css/menustyles.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/script.js" type="text/javascript"></script>
     <style>
-        #views
-        {
+        #views {
             font: 13px Arial;
             width: 500px;
             text-align: center;
             overflow: hidden;
         }
-        #views div
-        {
-            width: auto;
-            text-align: left;
-            margin: 1px;
-            padding: 2px 5px;
-            letter-spacing: 1px;
-        }
+
+            #views div {
+                width: auto;
+                text-align: left;
+                margin: 1px;
+                padding: 2px 5px;
+                letter-spacing: 1px;
+            }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id='cssmenu'>
-        <ul>
-            <li><a href='home.html'><span>Home</span></a></li>
-            <li class='has-sub'><a href='#'><span>Admin</span></a>
-                <ul>
-                    <li><a href='CreateAdd.html'><span>Create Add</span></a> </li>
-                    <li><a href='ActiveAdds.html'><span>Active Adds</span></a> </li>
-                </ul>
-            </li>
-            <li><a href='Products.html'><span>Products</span></a></li>
-            <li class='has-sub'><a href='#'><span>Reports</span></a>
-                <ul>
-                    <li><a href='#'><span>State wise Analysis</span></a> </li>
-                </ul>
-            </li>
-            <li class='last'><a href='#'><span>Contact</span></a></li>
-        </ul>
-    </div>
-    <div id="views">
-    </div>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='home.html'><span>Home</span></a></li>
+                <li class='has-sub'>
+                    <a href='#'><span>Admin</span></a>
+                    <ul>
+                        <li><a href='CreateAdd.html'><span>Create Add</span></a> </li>
+                        <li><a href='ActiveAdds.html'><span>Active Adds</span></a> </li>
+                    </ul>
+                </li>
+                <li><a href='Products.html'><span>Products</span></a></li>
+                <li class='has-sub'>
+                    <a href='#'><span>Reports</span></a>
+                    <ul>
+                        <li><a href='#'><span>State wise Analysis</span></a> </li>
+                    </ul>
+                </li>
+                <li class='last'><a href='#'><span>Contact</span></a></li>
+            </ul>
+        </div>
+        <table id="tblActiveAdds"></table>
     </form>
 </body>
 <script>
 
 
     function getData() {
-
-        $('#views').empty();
         $.ajax({
             type: 'GET',
             url: 'api/values/getUrlNames',
             async: true,
             cache: false,
             success: function (msg) {
-
-                alert('test success');
+                PopulatAdds(msg);
             },
             error: function (a, b, c) {
-                alert('test error');
+              
             }
+        });
+    }
+
+    function PopulatAdds(msg) {
+
+        $("#tblActiveAdds").empty();
+        $.each(msg, function (i, obj) {
+            // var details = msg[i].Make + "<br/>" + msg[i].Model + "<br/>" + msg[i].Color + "<br/>" + msg[i].Specs + "<br/>";
+            var details = msg[i].ID + "--" + msg[i].AgeGroup + "--" + msg[i].Gender + "--" + msg[i].Region;
+
+            $("#tblActiveAdds").append(
+                "<tr>" +
+               " <td><img class='img' src='" + msg[i].ImageURL + "' data-view-name='" + details + "'></img></td></tr>"
+
+
+             );
         });
     }
 
@@ -72,33 +85,39 @@
 
         getData();
 
-        $('#views').on('click', 'img', function () {
+        $(document).on('click', '.img', function () {
             var viewName = $(this).attr("data-view-name");
-            // alert(viewName);
 
             var arr = viewName.split('--');
-            var List = {};
-            List.Make = arr[0];
-            List.Model = arr[1]; ;
-            List.Color = arr[2]; ;
 
-            //            $.ajax({
-            //                type: "POST",
-            //                contentType: "application/json;charset=utf-8",
-            //                data: { List: JSON.stringify(List) },
-            //                dataType: "json",
-            //                url: "../../Test/AddXmltoTest",
-            //                success: function (msg) {
-            //                    // alert("success" + msg);
-            //                    getData();
-            //                },
-            //                error: function (x, e) {
-            //                    getData();
-            //                    /*  alert('Failed');
-            //                    alert(x.responseText);
-            //                    alert(x.status);*/
-            //                }
-            //            });
+            var AgeGroup = arr[1];
+            var Gender = arr[2];;
+            var Region = arr[3];
+            var ID = arr[0];
+
+            var data = {
+                AgeGroup: AgeGroup,
+                Gender: Gender,
+                Region: Region,
+                ID: ID
+            }
+
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                data: data,
+                url: "api/values/AddsViewHistory",
+                success: function (msg) {
+                    window.location.replace("products.html");
+
+                },
+                error: function (x, e) {
+                    /*
+                                        alert('Failed');
+                                        alert(x.responseText);
+                                        alert(x.status);*/
+                }
+            });
 
 
         });

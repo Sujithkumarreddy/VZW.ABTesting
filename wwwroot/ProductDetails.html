@@ -61,15 +61,14 @@
         $('#views').empty();
         $.ajax({
             type: 'GET',
-            url: 'api/values/GetProductsDetails/'+ID,
+            url: 'api/values/GetProductsDetails/' + ID,
             async: true,
             cache: false,
             success: function (msg) {
-                alert('test Success');
                 PopulateProducts(msg);
             },
             error: function (a, b, c) {
-                alert('test error');
+
             }
         });
     }
@@ -79,13 +78,16 @@
         $("#tblProductDetails").empty();
         $.each(msg, function (i, obj) {
             // var details = msg[i].Make + "<br/>" + msg[i].Model + "<br/>" + msg[i].Color + "<br/>" + msg[i].Specs + "<br/>";
-            var details = msg[i].Make + "&nbsp;&nbsp;" + msg[i].Model + "&nbsp;&nbsp;" + msg[i].Color + "&nbsp;&nbsp;" + msg[i].Specs + "&nbsp;&nbsp;";
 
             $("#tblProductDetails").append(
                 "<tr>" +
-               " <td><a href='#'><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></a></td></tr>" +
-              // "<tr><td>" + details + "</td></tr>"+
-               "<tr><td><a href='#'>" + details + "</a></td></tr>"
+                    "<td><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></td></tr>" +
+                    "<tr><td>Make</td><td>" + msg[i].Make + "</td></tr>" +
+                    "<tr><td>Model</td><td>" + msg[i].Model + "</td></tr>" +
+                    "<tr><td>Color</td><td>" + msg[i].Color + "</td></tr>" +
+                    "<tr><td>Specs</td><td>" + msg[i].Specs + "</td></tr>" +
+                    "<tr><td><a href='#'>" + msg[i].Description + "</a></td></tr>" +
+                     "<tr><td><input type='button'  value='Buy' class='btn' id='" + msg[i].ID + "'  data-view-name='" + msg[i].ID + "' title='CLick here to buy'/></td></tr>"
              );
         });
     }
@@ -106,38 +108,31 @@
     $(document).ready(function () {
 
         var ID = getUrlVars()["ID"];
-        getData(ID);
+        getData(ID);      
 
-        $('#views').on('click', 'img', function () {
-            var viewName = $(this).attr("data-view-name");
-            // alert(viewName);
+        $(document).on('click', '.btn', function () {
+            var ID = $(this).attr("data-view-name");
+            
+            $.ajax({
+                type: "get",
+                url: "api/values/UpdatePurchased/" + ID,
+                success: function (msg) {
 
-            var arr = viewName.split('--');
-            var List = {};
-            List.Make = arr[0];
-            List.Model = arr[1];;
-            List.Color = arr[2];;
+                    alert("Thanks for shoping in vzw.com.");
+                    window.location.replace("home.html");
 
-            //            $.ajax({
-            //                type: "POST",
-            //                contentType: "application/json;charset=utf-8",
-            //                data: { List: JSON.stringify(List) },
-            //                dataType: "json",
-            //                url: "../../Test/AddXmltoTest",
-            //                success: function (msg) {
-            //                    // alert("success" + msg);
-            //                    getData();
-            //                },
-            //                error: function (x, e) {
-            //                    getData();
-            //                    /*  alert('Failed');
-            //                    alert(x.responseText);
-            //                    alert(x.status);*/
-            //                }
-            //            });
-
-
+                },
+                error: function (x, e) {
+                    alert('Failed');
+                    alert(x.responseText);
+                    alert(x.status);
+                }
+            });
         });
+
+
+
+
 
     });
 

@@ -10,10 +10,13 @@ namespace WebApiSample.Initializer
     {
         public static List<Product> lstProducts { get; set; }
         public static List<CreateAdd> lstAdds { get; set; }
+        public static List<AddsHistory> lstAddsHistory { get; set; }
+
         public static void intialize()
         {
             lstProducts = DataFeeder.getProducts();
             lstAdds = DataFeeder.getActiveAdds();
+            lstAddsHistory = DataFeeder.getAddsHistory();
         }
     }
 }

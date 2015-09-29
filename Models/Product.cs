@@ -16,6 +16,7 @@ namespace WebApiSample.Models
         public string Price { get; set; }
         public string OfferPrice { get; set; }
         public int Views { get; set; }
-        public int Description { get; set; }
+        public string Description { get; set; }
+        public int TotalNoOfPurchases { get; set; }
     }
 }

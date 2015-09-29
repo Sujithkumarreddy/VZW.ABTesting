@@ -102,7 +102,7 @@
         //alert("Age!!" + data);
         $.ajax({
             type: 'POST',
-            url: '../../api/Values/PostURL',
+            url: 'api/Values/PostURL',
             data: data,
             async: true,
             cache: false,
@@ -110,7 +110,7 @@
 
                 OnLoad()
             }, error: function () {
-                alert("error");
+                
             }
 
 
@@ -119,14 +119,14 @@
     function OnLoad() {
         $.ajax({
             type: 'GET',
-            url: '../../api/Values/getUrlNames',
+            url: 'api/Values/getUrlNames',
             async: true,
             cache: false,
             success: function (xml) {
 
                 LoadData(xml);
             }, error: function () {
-                alert("error");
+                
             }
         });
     }

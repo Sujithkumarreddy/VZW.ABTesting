@@ -82,6 +82,33 @@ namespace WebApiSample.Controllers
             var Product = Seeder.lstProducts.Where(kvp => kvp.ID == id).Select(x => x).ToArray();
             return Json(Product);
         }
+
+        [Route("[action]/{id}")]
+        public string UpdatePurchased(int id)
+        {
+            var Product = Seeder.lstProducts.Where(kvp => kvp.ID == id).Select(x => x).ToArray();
+
+            if (Product != null && Product.Length == 1)
+            {
+                Product[0].TotalNoOfPurchases = Product[0].TotalNoOfPurchases + 1;
+            }
+            return "ok";
+        }
+
+
+        [Route("[action]")]
+        public JsonResult AddsViewHistory(AddsHistory value)
+        {
+            AddsHistory objAdd = new AddsHistory();
+            objAdd.AgeGroup = value.AgeGroup;
+            objAdd.Gender = value.Gender;
+            objAdd.Region = value.Region;
+            objAdd.Views = value.Views;
+            objAdd.ID = value.ID;
+            Seeder.lstAddsHistory.Add(objAdd);
+            return Json("ok");
+        }
+
     }
 
     

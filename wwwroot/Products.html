@@ -64,7 +64,7 @@
                 PopulateProducts(msg);
             },
             error: function (a, b, c) {
-                alert('test error');
+               
             }
         });
     }
@@ -90,8 +90,7 @@
         getData();
 
         $('#tblProducts').on('click', 'img', function () {
-            var viewID = $(this).attr("data-view-name");
-            alert(viewID);
+            var viewID = $(this).attr("data-view-name");          
 
             $.ajax({
                 type: "get",
