@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link href="css/menustyles.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id='cssmenu'>
+        <ul>
+            <li><a href='home.html'><span>Home</span></a></li>
+            <li class='has-sub'>
+                <a href='#'><span>Admin</span></a>
+                <ul>
+                    <li><a href='CreateAdd.html'><span>Create Add</span></a> </li>
+                    <li><a href='ActiveAdds.html'><span>Active Adds</span></a> </li>
+                </ul>
+            </li>
+            <li><a href='Products.html'><span>Products</span></a></li>
+            <li class='has-sub'>
+                <a href='#'><span>Reports</span></a>
+                <ul>
+                    <li><a href='#'><span>State wise Analysis</span></a> </li>
+                </ul>
+            </li>
+            <li class='last'><a href='#'><span>Contact</span></a></li>
+        </ul>
+    </div>
+    <div>
+        <label for="txtAge"> Age: </label>
+        <select id="ddlAge">
+            <option value="LT5"></option>
+            <option value="LT5"> Below 5 Years</option>
+            <option value="5T13">5 to 13 Years</option>
+            <option value="14T17">14 To 17 Years</option>
+            <option value="18T24">18 To 24 Years</option>
+            <option value="25T44">25 To 44 Years</option>
+            <option value="45T64">45 To 64 Years</option>
+            <option value="64UT">65 Years and Over</option>
+        </select>
+    </div>
+    <div>
+        <label for="txtGender"> Gender: </label>
+        <input type="text" id="txtGender" />
+    </div>
+    <div>
+        <label for="txtDevice"> Device: </label>
+        <input type="text" id="txtDevice" />
+    </div>
+    <div>
+        <label for="txtBrowser"> Browser: </label>
+        <input type="text" id="txtBrowser" />
+    </div>
+    <div>
+        <label for="txtRegion"> Region: </label>
+        <input type="text" id="txtRegion" />
+    </div>
+    <div>
+        <label for="txtProductURL"> URL: </label>
+        <input type="text" id="txtProductURL" />
+    </div>
+    <div>
+
+        <button id="btnSave">Save</button>
+    </div>
+</body>
+<div>
+    <table id="tblAddItems">
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Age </th>
+                <th>Gender</th>
+                <th>Device</th>
+                <th>Region</th>
+                <th>Browser</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+</html>
+<script>
+    function SaveData() {
+        //alert("Age!!");
+        var AgeGroup = $("#ddlAge option:selected").text();
+        var Gender = $("#txtGender").val();
+        var Region = $("#txtDevice").val();
+        var Device = $("#txtBrowser").val();
+        var region = $("#txtRegion").val();
+        var URL = $("#txtGender").val() + "&AgeGroup=" + AgeGroup + "&Gender=" + Gender + "&Region=" + Region + "&Device=" + Device + "&region" + region;
+        var data = {
+            AgeGroup: AgeGroup,
+            Gender: Gender,
+            Region: Region,
+            Device: Device,
+            Browser: region,
+            URL: URL
+        }
+        //alert("Age!!" + data);
+        $.ajax({
+            type: 'POST',
+            url: '../../api/Values/PostURL',
+            data: data,
+            async: true,
+            cache: false,
+            success: function (xml) {
+
+                OnLoad()
+            }, error: function () {
+                alert("error");
+            }
+
+
+        });
+    }
+    function OnLoad() {
+        $.ajax({
+            type: 'GET',
+            url: '../../api/Values/getUrlNames',
+            async: true,
+            cache: false,
+            success: function (xml) {
+
+                LoadData(xml);
+            }, error: function () {
+                alert("error");
+            }
+        });
+    }
+    function LoadData(msg) {
+        $("#tblAddItems").find("tbody").empty();
+        $.each(msg, function (i, obj) {
+            var sURL = msg[i].URL;
+            var sAgeGroup = msg[i].AgeGroup;
+            var sGender = msg[i].Gender;
+            var sRegion = msg[i].Region;
+            var sBrowser = msg[i].Browser;
+            var sDevice = msg[i].Device;
+            $("#tblAddItems").append(
+                "<tr>" +
+               " <td>" + sURL + "</td>" +
+                " <td>" + sAgeGroup + "</td>" +
+                 " <td>" + sGender + "</td>" +
+                  " <td>" + sRegion + "</td>" +
+                   " <td>" + sBrowser + "</td>" +
+                    " <td>" + sDevice + "</td>" +
+                "</tr>"
+                );
+        });
+    }
+    $("#btnSave").click(function (event) {
+        //  debugger;
+        SaveData();
+
+        event.preventDefault();
+
+        // location.reload();
+
+
+    });
+    $(document).ready(function () {
+        OnLoad();
+
+    });
+
+</script>
