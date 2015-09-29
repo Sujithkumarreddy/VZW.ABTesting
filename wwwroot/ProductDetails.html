@@ -54,4 +54,78 @@
         <table id="tblProductDetails"></table>
     </form>
 </body>
+<script type="text/javascript">
+
+    function getData() {
+
+        $('#views').empty();
+        $.ajax({
+            type: 'GET',
+            url: 'api/values/GetProducts',
+            async: true,
+            cache: false,
+            success: function (msg) {
+                PopulateProducts(msg);
+            },
+            error: function (a, b, c) {
+                alert('test error');
+            }
+        });
+    }
+
+
+    function PopulateProducts(msg) {
+        $("#tblProducts").empty();
+        $.each(msg, function (i, obj) {
+            // var details = msg[i].Make + "<br/>" + msg[i].Model + "<br/>" + msg[i].Color + "<br/>" + msg[i].Specs + "<br/>";
+            var details = msg[i].Make + "&nbsp;&nbsp;" + msg[i].Model + "&nbsp;&nbsp;" + msg[i].Color + "&nbsp;&nbsp;" + msg[i].Specs + "&nbsp;&nbsp;";
+
+            $("#tblProducts").append(
+                "<tr>" +
+               " <td><a href='#'><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></a></td></tr>" +
+              // "<tr><td>" + details + "</td></tr>"+
+               "<tr><td><a href='#'>" + details + "</a></td></tr>"
+             );
+        });
+    }
+
+    $(document).ready(function () {
+
+     //   getData();
+
+        $('#views').on('click', 'img', function () {
+            var viewName = $(this).attr("data-view-name");
+            // alert(viewName);
+
+            var arr = viewName.split('--');
+            var List = {};
+            List.Make = arr[0];
+            List.Model = arr[1];;
+            List.Color = arr[2];;
+
+            //            $.ajax({
+            //                type: "POST",
+            //                contentType: "application/json;charset=utf-8",
+            //                data: { List: JSON.stringify(List) },
+            //                dataType: "json",
+            //                url: "../../Test/AddXmltoTest",
+            //                success: function (msg) {
+            //                    // alert("success" + msg);
+            //                    getData();
+            //                },
+            //                error: function (x, e) {
+            //                    getData();
+            //                    /*  alert('Failed');
+            //                    alert(x.responseText);
+            //                    alert(x.status);*/
+            //                }
+            //            });
+
+
+        });
+
+    });
+
+
+</script>
 </html>
