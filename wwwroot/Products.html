@@ -78,7 +78,7 @@
 
             $("#tblProducts").append(
                 "<tr>" +
-               " <td><a href='#'><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></a></td></tr>" +
+               " <td><a href='#'  data-view-name='" + msg[i].ID + "'><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></a></td></tr>" +
               // "<tr><td>" + details + "</td></tr>"+
                "<tr><td><a href='#'>" + details + "</a></td></tr>"
              );
@@ -89,33 +89,24 @@
 
         getData();
 
-        $('#views').on('click', 'img', function () {
-            var viewName = $(this).attr("data-view-name");
-            // alert(viewName);
+        $('#tblProducts').on('click', 'img', function () {
+            var viewID = $(this).attr("data-view-name");
+            alert(viewID);
 
-            var arr = viewName.split('--');
-            var List = {};
-            List.Make = arr[0];
-            List.Model = arr[1];;
-            List.Color = arr[2];;
+            $.ajax({
+                type: "get",
+                url: "api/values/IncrementCounter/" + viewID,
+                success: function (msg) {
 
-            //            $.ajax({
-            //                type: "POST",
-            //                contentType: "application/json;charset=utf-8",
-            //                data: { List: JSON.stringify(List) },
-            //                dataType: "json",
-            //                url: "../../Test/AddXmltoTest",
-            //                success: function (msg) {
-            //                    // alert("success" + msg);
-            //                    getData();
-            //                },
-            //                error: function (x, e) {
-            //                    getData();
-            //                    /*  alert('Failed');
-            //                    alert(x.responseText);
-            //                    alert(x.status);*/
-            //                }
-            //            });
+                    window.location.replace("ProductDetails.html?ID=" + viewID);
+
+                },
+                error: function (x, e) {
+                    /*  alert('Failed');
+                     alert(x.responseText);
+                     alert(x.status); */
+                }
+            });
 
 
         });

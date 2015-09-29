@@ -56,15 +56,16 @@
 </body>
 <script type="text/javascript">
 
-    function getData() {
+    function getData(ID) {
 
         $('#views').empty();
         $.ajax({
             type: 'GET',
-            url: 'api/values/GetProducts',
+            url: 'api/values/GetProductsDetails/'+ID,
             async: true,
             cache: false,
             success: function (msg) {
+                alert('test Success');
                 PopulateProducts(msg);
             },
             error: function (a, b, c) {
@@ -75,12 +76,12 @@
 
 
     function PopulateProducts(msg) {
-        $("#tblProducts").empty();
+        $("#tblProductDetails").empty();
         $.each(msg, function (i, obj) {
             // var details = msg[i].Make + "<br/>" + msg[i].Model + "<br/>" + msg[i].Color + "<br/>" + msg[i].Specs + "<br/>";
             var details = msg[i].Make + "&nbsp;&nbsp;" + msg[i].Model + "&nbsp;&nbsp;" + msg[i].Color + "&nbsp;&nbsp;" + msg[i].Specs + "&nbsp;&nbsp;";
 
-            $("#tblProducts").append(
+            $("#tblProductDetails").append(
                 "<tr>" +
                " <td><a href='#'><img src='" + msg[i].ImgPath + "' data-view-name='" + msg[i].ID + "'></img></a></td></tr>" +
               // "<tr><td>" + details + "</td></tr>"+
@@ -89,9 +90,23 @@
         });
     }
 
+    // Read a page's GET URL variables and return them as an associative array.
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+
     $(document).ready(function () {
 
-     //   getData();
+        var ID = getUrlVars()["ID"];
+        getData(ID);
 
         $('#views').on('click', 'img', function () {
             var viewName = $(this).attr("data-view-name");

@@ -15,7 +15,8 @@ namespace WebApiSample.Initializer
             List<Product> lstProd = new List<Product>();
 
             Product lt = new Product();
-            lt.ID = (productKey + 1);
+            productKey = productKey + 1;
+            lt.ID = productKey;
             lt.Make = "Apple";
             lt.Model = "I Phone 5";
             lt.Color = "Black";
@@ -27,7 +28,8 @@ namespace WebApiSample.Initializer
             lstProd.Add(lt);
 
             Product lt1 = new Product();
-            lt1.ID = (productKey + 1);
+            productKey = productKey + 1;
+            lt1.ID = productKey;
             lt1.Make = "Apple";
             lt1.Model = "I Phone 5";
             lt1.Color = "White";
@@ -39,7 +41,8 @@ namespace WebApiSample.Initializer
             lstProd.Add(lt1);
 
             Product lt2 = new Product();
-            lt2.ID = (productKey + 1);
+            productKey = productKey + 1;
+            lt2.ID = productKey;
             lt2.Make = "Apple";
             lt2.Model = "I Phone 5";
             lt2.Color = "Gold";

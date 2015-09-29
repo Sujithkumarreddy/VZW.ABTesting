@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Mvc;
 using WebApiSample.Models;
 using WebApiSample.Initializer;
+using System.Linq;
 
 namespace WebApiSample.Controllers
 {
@@ -63,7 +64,27 @@ namespace WebApiSample.Controllers
         {        
             return Seeder.lstAdds;
         }
+        [Route("[action]/{id}")]      
+        public string IncrementCounter(int id)
+        {
+            var Product = Seeder.lstProducts.Where(kvp => kvp.ID == id).Select(x => x).ToArray();
+             
+            if (Product != null && Product.Length==1)
+            {
+                Product[0].Views = Product[0].Views + 1;
+            }
+            return "ok";
+        }
+
+        [Route("[action]/{id}")]
+        public JsonResult GetProductsDetails(int id)
+        {
+            var Product = Seeder.lstProducts.Where(kvp => kvp.ID == id).Select(x => x).ToArray();
+            return Json(Product);
+        }
     }
+
+    
 }
 
 
