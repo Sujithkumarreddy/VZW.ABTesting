@@ -6,7 +6,7 @@ install:
   - dnvm upgrade
   - dnu restore
 script:
-  - cd VZW.ABTesting/ && dnu build
+  - cd / && dnu build
 notifications:
   slack: brickpile:EXJMvnNmca5nvL24ShjG9M1i
 deploy:
