@@ -16,11 +16,6 @@
   },
 
   "frameworks": {
-    "dnx451": {
-      "frameworkAssemblies": {
-       
-      }
-    }   
   },
 
   "exclude": [
