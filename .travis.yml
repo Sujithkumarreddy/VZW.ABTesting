@@ -1,7 +1,7 @@
 language: csharp
 node_js: 
  - '0.10' 
-solution: WebApiSample.sln 
+solution: VZW.ABTesting.sln 
 mono:
   - latest
 deploy:
@@ -16,6 +16,6 @@ deploy:
 before_install:
   - sudo apt-get install nunit-console
 before_script:
-  - nuget restore WebApiSample.sln
+  - nuget restore VZW.ABTesting.sln
 
 
