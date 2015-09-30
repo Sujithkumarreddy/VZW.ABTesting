@@ -126,7 +126,7 @@ namespace WebApiSample.Controllers
             return Json(rm);
         }
 
-        [Route("[action]/{id}")]
+        [Route("[action]/{id}/{Region}")]
         public JsonResult getAgeGroup(int id, string Region)
         {
             //Filter by both ADID / Region
@@ -144,7 +144,7 @@ namespace WebApiSample.Controllers
             return Json(ag);
         }
 
-        [Route("[action]/{id}")]
+        [Route("[action]/{Region}")]
         public JsonResult getRealTime(string Region)
         {
             Spline rt = new Spline();
@@ -152,6 +152,7 @@ namespace WebApiSample.Controllers
             rt.AdsHistoryList = ahl;
 
             return Json(rt.AdsHistoryList);
+            
         }
 
     }

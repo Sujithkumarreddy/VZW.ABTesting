@@ -7,6 +7,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "VZW.ABTesting", "VZW.ABTest
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "VZW.ABTesting.Xunit", "..\VZW.ABTesting.Xunit\VZW.ABTesting.Xunit.xproj", "{8CD235D9-6400-48FF-8FE5-7A8988606ACB}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ABTestUnit", "..\ABTestUnit\ABTestUnit.xproj", "{EC5DE140-710D-4499-A6D1-B1DB20161EFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8CD235D9-6400-48FF-8FE5-7A8988606ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CD235D9-6400-48FF-8FE5-7A8988606ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CD235D9-6400-48FF-8FE5-7A8988606ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC5DE140-710D-4499-A6D1-B1DB20161EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5DE140-710D-4499-A6D1-B1DB20161EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5DE140-710D-4499-A6D1-B1DB20161EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5DE140-710D-4499-A6D1-B1DB20161EFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

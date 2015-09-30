@@ -68,9 +68,17 @@ setInterval(function(){
 				data(3),
 				data(4),
 				data(5)
-			];
-		*/
-		dataX = [getaxis(), data.columns[1], data.columns[2], data.columns[3], data.columns[4]];
+		];
+        */
+		var dataX = [
+            ['x', new Date().getTime()],
+            ['Promo1', Math.floor(Math.random() * 99)],
+            ['Promo2', Math.floor(Math.random() * 99)],
+            ['Promo3', Math.floor(Math.random() * 99)],
+            ['Promo4', Math.floor(Math.random() * 99)]
+		];
+		
+		//dataX = [getaxis(), data.columns[1], data.columns[2], data.columns[3], data.columns[4]];
 		
 		pubnub.publish({
 			channel: channel,
@@ -80,7 +88,14 @@ setInterval(function(){
 		  });
 	});
 			
-  
+	function getaxis() {
+	    return ['x', new Date().getTime()];
+	}
+
+    //generate dummy data
+	function data(i) {
+	    return ['Promo' + i, mathrandom()];
+	}
 
 	
 }, 3000);

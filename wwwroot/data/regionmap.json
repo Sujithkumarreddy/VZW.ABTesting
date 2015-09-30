@@ -17,4 +17,23 @@
 	"region":"Florida",
     "hits":25
   }
+  ,
+  {
+    "adid":1,
+	"regioncode":"CA",
+	"region":"Texas",
+    "hits":10
+  },
+  {
+    "adid":2,
+	"regioncode":"NY",
+	"region":"Michigan",
+    "hits":15
+  },
+  {
+    "adid":3,
+	"regioncode":"FL",
+	"region":"Arizona",
+    "hits":25
+  }
 ]
