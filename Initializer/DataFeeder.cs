@@ -66,15 +66,74 @@ namespace WebApiSample.Initializer
        
         public static List<CreateAdd> getActiveAdds()
         {
-            List<CreateAdd> lstAdds = new List<CreateAdd>();            
+            List<CreateAdd> lstAdds = new List<CreateAdd>();
             CreateAdd objAdd = new CreateAdd();
-            objAdd.AgeGroup = "below 5";
+            objAdd.ID = 1;
+            objAdd.AgeGroup = "14T17";
+            objAdd.AgeGroupRange = "14 To 17 Years";
             objAdd.Browser = "IE";
             objAdd.Device = "Android";
             objAdd.Gender = "M";
-            objAdd.Region = "TV";
-            objAdd.ImageURL =  "images/I6_Black.jpeg";
+            objAdd.Region = "AL";
+            objAdd.RegionName = "Alabama";
+            objAdd.URL = "Product.html&AgeGroup="+ objAdd.AgeGroup + "&Gender="+ objAdd.Gender + "&Region="+ objAdd.Region + "&Device="+ objAdd.Device + "&Browser="+objAdd.Browser;
+            objAdd.ImageURL = "Images/16_Black.jpeg";
             lstAdds.Add(objAdd);
+
+
+            CreateAdd objAdd2 = new CreateAdd();
+            objAdd2.ID = 2;
+            objAdd2.AgeGroup = "25T44";
+            objAdd2.AgeGroupRange = "25 To 44 Years";
+            objAdd2.Browser = "IE";
+            objAdd2.Device = "Android";
+            objAdd2.Gender = "F";
+            objAdd2.Region = "AR";
+            objAdd2.RegionName = "Arkansas";
+            objAdd2.URL = "Product.html&AgeGroup=" + objAdd2.AgeGroup + "&Gender=" + objAdd2.Gender + "&Region=" + objAdd2.Region + "&Device=" + objAdd2.Device + "&Browser=" + objAdd2.Browser;
+            objAdd2.ImageURL = "Images/16_Black.jpeg";
+            lstAdds.Add(objAdd2);
+
+
+            CreateAdd objAdd3 = new CreateAdd();
+            objAdd3.ID = 3;
+            objAdd3.AgeGroup = "14T17";
+            objAdd3.AgeGroupRange = "14 To 17 Years";
+            objAdd3.Browser = "IE";
+            objAdd3.Device = "Android";
+            objAdd3.Gender = "M";
+            objAdd3.Region = "CT";
+            objAdd3.RegionName = "Connecticut";
+            objAdd3.URL = "Product.html&AgeGroup=" + objAdd3.AgeGroup + "&Gender=" + objAdd3.Gender + "&Region=" + objAdd3.Region + "&Device=" + objAdd3.Device + "&Browser=" + objAdd3.Browser; 
+            objAdd3.ImageURL = "Images/16_Black.jpeg";
+            lstAdds.Add(objAdd3);
+
+
+            CreateAdd objAdd4 = new CreateAdd();
+            objAdd4.ID = 4;
+            objAdd4.AgeGroup = "25T44";
+            objAdd4.AgeGroupRange = "25 To 44 Years";
+            objAdd4.Browser = "IE";
+            objAdd4.Device = "Android";
+            objAdd4.Gender = "F";
+            objAdd4.Region = "IN";
+            objAdd4.RegionName = "Indiana";
+            objAdd4.URL = "Product.html&AgeGroup=" + objAdd4.AgeGroup + "&Gender=" + objAdd4.Gender + "&Region=" + objAdd4.Region + "&Device=" + objAdd4.Device + "&Browser=" + objAdd4.Browser;
+            objAdd4.ImageURL = "Images/16_Black.jpeg";
+            lstAdds.Add(objAdd4);
+
+            CreateAdd objAdd5 = new CreateAdd();
+            objAdd5.ID = 5;
+            objAdd5.AgeGroup = "45T65";
+            objAdd5.AgeGroupRange = "45 To 64 Years";
+            objAdd5.Browser = "IE";
+            objAdd5.Device = "Android";
+            objAdd5.Gender = "M";
+            objAdd5.Region = "KS";
+            objAdd5.RegionName = "Kansas";
+            objAdd5.URL = "Product.html&AgeGroup=" + objAdd5.AgeGroup + "&Gender=" + objAdd5.Gender + "&Region=" + objAdd5.Region + "&Device=" + objAdd5.Device + "&Browser=" + objAdd5.Browser;
+            objAdd5.ImageURL = "Images/16_Black.jpeg";
+            lstAdds.Add(objAdd5);
             return lstAdds;
         }
 
