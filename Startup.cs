@@ -17,7 +17,7 @@ namespace WebApiSample
 
         public Startup(IHostingEnvironment env)
         {
-            //Seeder.intialize();
+            Seeder.intialize();
         }
 
         // This method gets called by a runtime.
