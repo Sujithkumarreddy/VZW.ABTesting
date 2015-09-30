@@ -4,8 +4,8 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
- <!-- after the first PropertyGroup, but before the "Globals" -->
-<Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
+  <!-- after the first PropertyGroup, but before the "Globals" -->
+  <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>78c4a409-f76c-4e48-b91f-b685a2db0009</ProjectGuid>
     <RootNamespace>WebApiSample</RootNamespace>
@@ -14,8 +14,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
-    <DevelopmentServerPort>3513</DevelopmentServerPort>
+    <IISExpressAnonymousAuthentication>Disabled</IISExpressAnonymousAuthentication>
+    <DevelopmentServerPort>56348</DevelopmentServerPort>
   </PropertyGroup>
- 
-<Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
