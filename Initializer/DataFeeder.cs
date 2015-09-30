@@ -66,8 +66,9 @@ namespace WebApiSample.Initializer
        
         public static List<CreateAdd> getActiveAdds()
         {
-            List<CreateAdd> lstAdds = new List<CreateAdd>();            
-             objAdd.ID = 1;
+            List<CreateAdd> lstAdds = new List<CreateAdd>();
+            CreateAdd objAdd = new CreateAdd();
+            objAdd.ID = 1;
             objAdd.AgeGroup = "14T17";
             objAdd.AgeGroupRange = "14 To 17 Years";
             objAdd.Browser = "IE";

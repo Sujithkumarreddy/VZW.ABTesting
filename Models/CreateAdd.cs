@@ -12,10 +12,10 @@ namespace WebApiSample.Models
         public string Region { get; set; }
         public string Device { get; set; }
         public string Browser { get; set; }
-           public int ID { get; set; }
+        public int ID { get; set; }
         public string URL { get; set; }
         public string RegionName { get; set; }
-        public string ImageURL { get; set; }        
+        public string ImageURL { get; set; }
         public int Views { get; set; }
         public string AgeGroupRange { get; set; }
     }

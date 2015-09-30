@@ -1,0 +1,20 @@
+[
+  {
+    "adid":1,
+	"regioncode":"CA",
+	"region":"California",
+    "hits":10
+  },
+  {
+    "adid":2,
+	"regioncode":"NY",
+	"region":"New York",
+    "hits":15
+  },
+  {
+    "adid":3,
+	"regioncode":"FL",
+	"region":"Florida",
+    "hits":25
+  }
+]
