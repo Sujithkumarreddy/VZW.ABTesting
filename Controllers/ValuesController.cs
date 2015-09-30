@@ -48,13 +48,16 @@ namespace WebApiSample.Controllers
         [Route("[action]")]
         public JsonResult PostURL(CreateAdd value)
         {
-            CreateAdd objAdd = new CreateAdd();
-            objAdd.AgeGroup = value.AgeGroup;
-            objAdd.Browser = value.Browser;
-            objAdd.Device = value.Device;
-            objAdd.Gender = value.Gender;
-            objAdd.Region = value.Region;
-            objAdd.URL = value.URL;
+                var id=Seeder.lstAdds.Count;
+                 CreateAdd objAdd = new CreateAdd();
+                objAdd.AgeGroup = value.AgeGroup;
+                objAdd.Browser = value.Browser;
+                objAdd.Device = value.Device;
+                objAdd.Gender = value.Gender;
+                objAdd.Region = value.Region;
+                objAdd.URL = value.URL;
+                objAdd.RegionName = value.RegionName;
+                objAdd.ID = id + 1;
             Seeder.lstAdds.Add(objAdd);
 
             return Json("ok");
