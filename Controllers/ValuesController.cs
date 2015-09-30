@@ -50,7 +50,9 @@ namespace WebApiSample.Controllers
         {
                 var id=Seeder.lstAdds.Count;
                  CreateAdd objAdd = new CreateAdd();
-                objAdd.AgeGroup = value.AgeGroup;
+                 objAdd.AgeGroup = value.AgeGroup;
+                objAdd.AgeGroupRange = value.AgeGroupRange;
+                objAdd.ImageURL = "";
                 objAdd.Browser = value.Browser;
                 objAdd.Device = value.Device;
                 objAdd.Gender = value.Gender;
