@@ -48,31 +48,33 @@ namespace WebApiSample.Controllers
         [Route("[action]")]
         public JsonResult PostURL(CreateAdd value)
         {
-                var id=Seeder.lstAdds.Count;
-                CreateAdd objAdd = new CreateAdd();
-                objAdd.AgeGroup = value.AgeGroup;
-                objAdd.Browser = value.Browser;
-                objAdd.Device = value.Device;
-                objAdd.Gender = value.Gender;
-                objAdd.Region = value.Region;
-                objAdd.URL = value.URL;
-                objAdd.RegionName = value.RegionName;
-                objAdd.ID = id + 1;
+            var id = Seeder.lstAdds.Count;
+            CreateAdd objAdd = new CreateAdd();
+            objAdd.AgeGroup = value.AgeGroup;
+            objAdd.Browser = value.Browser;
+            objAdd.Device = value.Device;
+            objAdd.Gender = value.Gender;
+            objAdd.Region = value.Region;
+            objAdd.URL = value.URL;
+            objAdd.RegionName = value.RegionName;
+            objAdd.ID = id + 1;
             Seeder.lstAdds.Add(objAdd);
 
             return Json("OK");
         }
+
         [Route("[action]")]
         public List<CreateAdd> getUrlNames()
-        {        
+        {
             return Seeder.lstAdds;
         }
-        [Route("[action]/{id}")]      
+
+        [Route("[action]/{id}")]
         public string IncrementCounter(int id)
         {
             var Product = Seeder.lstProducts.Where(kvp => kvp.ID == id).Select(x => x).ToArray();
-             
-            if (Product != null && Product.Length==1)
+
+            if (Product != null && Product.Length == 1)
             {
                 Product[0].Views = Product[0].Views + 1;
             }
@@ -98,7 +100,6 @@ namespace WebApiSample.Controllers
             return "ok";
         }
 
-
         [Route("[action]")]
         public JsonResult AddsViewHistory(AddsHistory value)
         {
@@ -111,10 +112,8 @@ namespace WebApiSample.Controllers
             Seeder.lstAddsHistory.Add(objAdd);
             return Json("ok");
         }
-
     }
 
-    
 }
 
 
