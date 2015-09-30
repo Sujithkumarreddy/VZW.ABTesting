@@ -49,7 +49,7 @@ namespace WebApiSample.Controllers
         public JsonResult PostURL(CreateAdd value)
         {
                 var id=Seeder.lstAdds.Count;
-                 CreateAdd objAdd = new CreateAdd();
+                CreateAdd objAdd = new CreateAdd();
                 objAdd.AgeGroup = value.AgeGroup;
                 objAdd.Browser = value.Browser;
                 objAdd.Device = value.Device;
@@ -60,7 +60,7 @@ namespace WebApiSample.Controllers
                 objAdd.ID = id + 1;
             Seeder.lstAdds.Add(objAdd);
 
-            return Json("ok");
+            return Json("OK");
         }
         [Route("[action]")]
         public List<CreateAdd> getUrlNames()
