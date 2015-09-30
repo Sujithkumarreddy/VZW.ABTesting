@@ -17,6 +17,7 @@ namespace WebApiSample.Models
         public string RegionName { get; set; }
         public string ImageURL { get; set; }        
         public int Views { get; set; }
+        public string AgeGroupRange { get; set; }
     }
 
 
